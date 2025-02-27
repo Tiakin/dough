@@ -25,10 +25,11 @@ public final class CustomItemStack {
     }
 
     public static ItemStack create(ItemStack item, @Nullable String name, String... lore) {
-        return new ItemStackEditor(item)
-                .setDisplayName(name)
-                .setLore(lore)
-                .create();
+        ItemStackEditor editor = new ItemStackEditor(item).setDisplayName(name);
+        if (lore != null) {
+            editor.setLore(lore);
+        }
+        return editor.create();
     }
 
     public static ItemStack create(Material material, @Nullable String name, String... lore) {
